@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article - abc</title>
+  </head>
+  <body>
+    <nav class="site__header">
+      <!--non cookie stuff under here-->
+      <div class="linkRow">
+        <a class="logo" href="https://ourtube.pro"
+          ><h1 id="logo">Ourtube.pro</h1></a
+        >
+        <!--modal-->
+        <button data-open-modal id="styleBTN">style</button>
+        <dialog id="modalBtn" data-modal id="styleModal">
+          <div>
+            <input type="radio" name="USSR_radio" id="USSR_radio" /><label
+              for="USSR_radio"
+              >USSR</label
+            >
+          </div>
+          <button data-close-modal>close</button><br />
+          <button data-apply-style>apply</button>
+        </dialog>
+      </div>
+    </nav>
+
+    <article id="article">
+      <h1 class="headline">Loading article...</h1>
+    </article>
+
+    <script>
+      // Grab `read` from the URL
+      const params = new URLSearchParams(window.location.search);
+      const articleID = params.get("read");
+
+      const articleContainer = document.getElementById("article");
+
+      if (!articleID) {
+        articleContainer.innerHTML =
+          "<h1 class='headline'>Missing article ID.</h1><br><p class='excerpt'>woah, there! This is not the place for you, quickly, get off the page before THEY find out you're here...</p>";
+      } else {
+        fetch(
+          `https://ourtoobe.app-37d.workers.dev/?id=${encodeURIComponent(
+            articleID
+          )}`,
+          {
+            headers: {
+              Referer: location.origin, // Required by your Worker
+            },
+          }
+        )
+          .then((response) => {
+            if (!response.ok)
+              return response.text().then((text) => {
+                throw new Error(text);
+              });
+            return response.text();
+          })
+          .then((html) => {
+            articleContainer.innerHTML = html;
+          })
+          .catch((err) => {
+            articleContainer.innerHTML = `<h1>Error loading article</h1><p>${err.message}</p>`;
+          });
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  p.excerpt {
+    padding-left: 3dvw;
+    padding-right: 3dvw;
+    width: 90dvw;
+    padding-top: 30px;
+    font-size: 25px;
+    font-family: PTSans;
+  }
+
+  h1.headline {
+    font-size: 10vw;
+    height: 50;
+    font-size-adjust: inherit;
+    text-align: center;
+    padding-top: none;
+    font-family: molot;
+  }
+
+  body {
+    height: 100dvh;
+    width: 100dvw;
+    padding: 10px;
+    padding-top: 35px;
+    font-size: auto;
+  }
+
+  article {
+    margin-top: 20px;
+  }
+</style>

@@ -1,0 +1,202 @@
+/*fonts*/
+
+@import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&display=swap');  
+
+@font-face {
+  font-family: molot;
+  src: url("extras/Molot.otf") format("opentype");
+}
+
+@font-face {
+  font-family: PTSans;
+  src: url("extras/PTSans-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: PTSans;
+  font-weight: bold;
+  src: url("extras/PTSans-Bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: PTSans;
+  font-style: italic;
+  src: url("extras/PTSans-Italic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: PTSans;
+  font-weight: Bold;
+  font-style: italic;
+  src: url("extras/PTSans-BoldItalic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: DSWalbaum;
+  src: url("extras/DSWalbaumfraktur.ttf") format("opentype");
+}
+/*modal*/
+#styleModal {
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    visibility: hidden;
+  }
+#styleModal.open {
+  visibility:show;
+}
+/*Top row*/
+
+#logo {
+  font-family: "BBH Sans Hegarty", sans-serif;
+  font-size: 2em;
+  color: #FFD700;
+  text-decoration: none;
+  width: fit-content;
+  display: inline-block;
+}
+a.logo {
+  text-decoration: none;
+}
+
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    overflow-y: show;
+  }
+
+  :root {
+    --height--header: 7rem;
+  }
+
+  :target {
+    scroll-margin-top: calc(var(--height--header) + 1rem);
+  }
+
+  .site {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 75px;
+    padding-bottom: 25px;
+    margin-top: 0px;
+    
+  }
+
+  .site__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+    color: blue;
+    z-index: 1000;
+    padding-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .linkRow {
+    background-color: #CC0000;
+    height: 50px;
+    font-size: large;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /*Article or Page*/
+
+
+
+
+  .content {
+    margin-top: none;
+    width: auto;
+    height: auto;
+    font-size: larger;
+
+    text-align: center;
+    outline: none;
+    padding-left: 5dvw;
+    padding-right: 5dvw;
+    margin-left: 5dvw;
+    margin-right: 5dvw;
+    padding-top: 2dvh;
+    padding-bottom: 3dvh;
+    margin-top: 10px;
+    margin-bottom: none;
+    border-radius: 25px;
+    background-color:rgba(128, 128, 128, 0.2);
+  }
+
+  /*only if there is a fish on the page.*/
+  #fish {
+    height: 100%;
+  }
+
+.headline {
+  font-family: molot;
+}
+
+.lead {
+  font-family: PTSans, sans-serif;
+  
+}
+
+
+#loadMore {
+  background-color: lightgray;
+  margin: 0 auto;
+  display: block;
+  height: 50px;
+  width: 125px;
+  border: none;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-family: PTSans;
+  font-size: medium;
+  cursor: default;
+  transition-duration: 0.1s;
+}
+#loadMore:hover {
+cursor:pointer;
+background-color: rgba(211, 211, 211, 0.589);
+}
+#loadMore:active {
+  background-color: gainsboro;
+}
+
+
+
+#styleBTN {
+  width: 75px;
+  height: 30px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 15px;
+  background-color: red;
+  color:#FFD700;
+  font-weight: 900;
+  border: none;
+  border-radius: 10px;
+  cursor:default;
+  transition-duration: 500ms;
+}
+
+#styleBTN:hover {
+  background-color:rgb(255, 106, 106);
+}
