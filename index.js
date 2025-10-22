@@ -69,3 +69,38 @@ function getCookie(name){
     return result;
 }
 
+
+// get those darn articles
+async function loadArticles() {
+  try {
+    const res = await fetch("https://ourtube.pro/article?list=true");
+    const articles = await res.json();
+
+    // Sort newest first
+    articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const container = document.getElementById("articles");
+    container.innerHTML = articles
+      .map(
+        (a) => `
+        <article class="content">
+          <h1 class="headline">
+            <a href="/article?read=${a.id}">${a.headline}</a>
+          </h1>
+          <label id="metadata">
+            by ${a.author} — ${a.date}
+          </label>
+          <p id="important">${a.important}</p>
+        </article>
+      `
+      )
+      .join("");
+  } catch (err) {
+    console.error("Error loading articles:", err);
+  }
+}
+
+loadArticles();
+
+
+
